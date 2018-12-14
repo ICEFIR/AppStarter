@@ -1,5 +1,5 @@
 {
-  "name": "appstarter",
+  "name": "visualcommandexecutor",
   "version": "1.0.0",
   "description": "A simple app that can be configured to start other apps",
   "main": "main.js",
@@ -14,12 +14,12 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ICEFIR/AppStarter.git"
+    "url": "git+https://github.com/ICEFIR/VisualCommandExecutor.git"
   },
   "author": "ICEFIR",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ICEFIR/AppStarter/issues"
+    "url": "https://github.com/ICEFIR/VisualCommandExecutor/issues"
   },
-  "homepage": "https://github.com/ICEFIR/AppStarter#readme"
+  "homepage": "https://github.com/ICEFIR/VisualCommandExecutor#readme"
 }

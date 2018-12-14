@@ -1,2 +1,3 @@
-# AppStarter
-A simple configurable electron app that can be used to start up other applications
+# VisualCommandExecutor
+A simple electron app that can execute all kinds of command and launching apps!
+With a an extremely premitive tamplate system

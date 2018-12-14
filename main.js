@@ -1,24 +1,25 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain} = require('electron')
+const fs = require('fs');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-let rowCounter = 0
+
+let RowTemplate = JSON.parse(fs.readFileSync('rowtemplate.json'));
+if(fs.existsSync('persistant.json')){
+  let persistantData = JSON.parse(fs.readFileSync('persistant.json'));  
+}else{
+  let persistantData = {rowCounter = 0,data = {}}
+}
 
 // ./Build/linux_build.x86 -serveraddress 127.0.0.1 -port 7350 -u t1@test1.com -p abcd1234 -m
-let sampleRowSetup =  [{name: "Path",commandPrefix :  "",input: "text"}
-,{name: "Server address",commandPrefix: "-s",input: "text"}
-,{name: "Username",commandPrefix: "-u",input: "text"}
-,{name: "Port",commandPrefix: "--port",input: "text"}
-,{name: "Password",commandPrefix: "-p",input: "text"}
-,{name: "Auto enter MM",commandPrefix: "-m",input: "checkbox"}]
 
 ipcMain.on("add_input_button_trigger",(event, arg) =>{
   console.log("IPC Main event triggered")
   
-  rowCounter += 1 
-  event.sender.send("add_input_row", rowCounter, sampleRowSetup)
+  persistantData.rowCounter += 1 
+  event.sender.send("add_input_row", persistantData.rowCounter, RowTemplate)
 
 })
 

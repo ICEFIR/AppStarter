@@ -12,9 +12,19 @@
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>. -->
 
-    <div class="column col-10">
+    <div class="columns">
+      <div class="column col-2 col-mr-auto">
+        <button id="addInputField" type="button" class="btn">Add new input row</button>
+      </div>
+      
+      
+      <div class="col-2">
+        <button id="column execute" type="button" class="btn">Execute</button>
+
+      </div>
+    </div>
 <!-- Sample generation -->
-    <button id="addInputField" type="button" class="btn">Add new input row</button>
+
     <!-- <form class="form-horizontal">
         <div class="form-group">
             <div class="col-1 col-sm-1">

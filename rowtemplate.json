@@ -1,0 +1,9 @@
+
+[
+    {"name": "Path","commandPrefix" :  "","input": "text"},
+    {"name": "Server address","commandPrefix": "-s","input": "text"},
+    {"name": "Username","commandPrefix": "-u","input": "text"},
+    {"name": "Port","commandPrefix": "--port","input": "text"},
+    {"name": "Password","commandPrefix": "-p","input": "text"},
+    {"name": "Auto enter MM","commandPrefix": "-m","input": "checkbox"}
+]
