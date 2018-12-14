@@ -11,14 +11,41 @@
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>. -->
-    <div class="container">
-      <div class="columns">
-        <div class="column col-10">
-          
-          <button id="addInputField" type="button" class="btn">Add new input row</button>
+
+    <div class="column col-10">
+<!-- Sample generation -->
+    <button id="addInputField" type="button" class="btn">Add new input row</button>
+    <!-- <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-1 col-sm-1">
+              <label class="form-label" for="input-example-1">Name</label>
+            </div>
+            <div class="col-3 col-sm-3">
+              <input class="form-input" type="text" id="input-example-1" placeholder="Name">
+            </div>
+            <div class="col-1 col-sm-1">
+                <label class="form-label" for="input-example-1">Name</label>
+              </div>
+            <div class="col-3 col-sm-3">
+                <input class="form-input" type="text" id="input-example-1" placeholder="Name">
+            </div>
+            <div class="col-1 col-sm-1">
+                <label class="form-label" for="input-example-1">Name</label>
+              </div>
+            <div class="col-3 col-sm-3">
+                <input class="form-input" type="text" id="input-example-1" placeholder="Name">
+            </div>
         </div>
-      </div>
+    </form> -->
+
+
+    <div class="form-horizontal">
+        <div class="form-group" id="inputList">
+
+        </div>
     </div>
+ 
+
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
