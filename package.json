@@ -1,0 +1,26 @@
+{
+  "name": "appstarter",
+  "version": "1.0.0",
+  "description": "A simple app that can be configured to start other apps",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^3.0.11"
+  },
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ICEFIR/AppStarter.git"
+  },
+  "author": "ICEFIR",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ICEFIR/AppStarter/issues"
+  },
+  "homepage": "https://github.com/ICEFIR/AppStarter#readme"
+}
