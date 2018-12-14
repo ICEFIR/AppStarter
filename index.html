@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="./node_modules/spectre.css/dist/spectre.min.css">
+  </head>
+  <body>
+    <h1><center>App Starter</center></h1>
+    <!-- All of the Node.js APIs are available in this renderer process.
+    We are using Node.js <script>document.write(process.versions.node)</script>,
+    Chromium <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>. -->
+    <div class="container">
+      <div class="columns">
+        <div class="column col-10">
+          
+          <button id="addInputField" type="button" class="btn">Add new input row</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>

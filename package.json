@@ -4,15 +4,14 @@
   "description": "A simple app that can be configured to start other apps",
   "main": "main.js",
   "dependencies": {
-    "electron": "^3.0.11"
+    "electron": "^3.0.11",
+    "spectre.css": "^0.5.7"
   },
   "scripts": {
-    "start": "electron ."
-  },
-  "devDependencies": {},
-  "scripts": {
+    "start":"electron .", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ICEFIR/AppStarter.git"
