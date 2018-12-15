@@ -6,48 +6,26 @@
     <link rel="stylesheet" href="./node_modules/spectre.css/dist/spectre.min.css">
   </head>
   <body>
-    <h1><center>App Starter</center></h1>
+    <h1><center>Visual Comman Executor</center></h1>
     <!-- All of the Node.js APIs are available in this renderer process.
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>. -->
 
     <div class="columns">
-      <div class="column col-2 col-mr-auto">
+      <div class="column col-3">
         <button id="addInputField" type="button" class="btn">Add new input row</button>
+      </div>
+      <div class="column col-3 col-mr-auto">
+        <button id="removeInputField" type="button" class="btn">Remove input row</button>
       </div>
       
       
       <div class="col-2">
-        <button id="column execute" type="button" class="btn">Execute</button>
+        <button id="execute" type="button" class="btn">Execute</button>
 
       </div>
     </div>
-<!-- Sample generation -->
-
-    <!-- <form class="form-horizontal">
-        <div class="form-group">
-            <div class="col-1 col-sm-1">
-              <label class="form-label" for="input-example-1">Name</label>
-            </div>
-            <div class="col-3 col-sm-3">
-              <input class="form-input" type="text" id="input-example-1" placeholder="Name">
-            </div>
-            <div class="col-1 col-sm-1">
-                <label class="form-label" for="input-example-1">Name</label>
-              </div>
-            <div class="col-3 col-sm-3">
-                <input class="form-input" type="text" id="input-example-1" placeholder="Name">
-            </div>
-            <div class="col-1 col-sm-1">
-                <label class="form-label" for="input-example-1">Name</label>
-              </div>
-            <div class="col-3 col-sm-3">
-                <input class="form-input" type="text" id="input-example-1" placeholder="Name">
-            </div>
-        </div>
-    </form> -->
-
 
     <div class="form-horizontal">
         <div class="form-group" id="inputList">

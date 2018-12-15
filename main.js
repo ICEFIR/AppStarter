@@ -1,16 +1,18 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, ipcMain} = require('electron')
 const fs = require('fs');
+const path = require('path')
+const { exec } = require('child_process');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
-
-let RowTemplate = JSON.parse(fs.readFileSync('rowtemplate.json'));
+let persistantData 
+let rowTemplate = JSON.parse(fs.readFileSync('rowtemplate.json'));
 if(fs.existsSync('persistant.json')){
-  let persistantData = JSON.parse(fs.readFileSync('persistant.json'));  
+  persistantData = JSON.parse(fs.readFileSync('persistant.json'));  
 }else{
-  let persistantData = {rowCounter = 0,data = {}}
+  persistantData = []
 }
 
 // ./Build/linux_build.x86 -serveraddress 127.0.0.1 -port 7350 -u t1@test1.com -p abcd1234 -m
@@ -18,9 +20,49 @@ if(fs.existsSync('persistant.json')){
 ipcMain.on("add_input_button_trigger",(event, arg) =>{
   console.log("IPC Main event triggered")
   
-  persistantData.rowCounter += 1 
-  event.sender.send("add_input_row", persistantData.rowCounter, RowTemplate)
+  event.sender.send("add_input_row", persistantData, rowTemplate)
 
+})
+
+ipcMain.on("persistant_data_new_row",(event,dataRow) =>{
+  persistantData.push(dataRow)
+})
+ipcMain.on("input_data",(event,data) => {
+  // console.log( "row " + data.row + " col " + data.col + " value " + data.value)
+  persistantData[data.row][data.col].input = data.value
+})
+
+ipcMain.on("pop_persistant_data",(event) => {
+  persistantData.pop()
+  event.sender.send("refresh_rendering",persistantData,rowTemplate)
+})
+
+ipcMain.on("execute",() => {
+  persistantData.forEach(element => {
+    var cmd = ""
+    element.forEach((e) => {
+      if(e.inputType=="checkbox"){
+        cmd += e.input != "" ? e.command : ""
+      }else{
+        cmd += e.command
+      }
+      
+      cmd += " "
+      if(e.name == "Path"){
+        cmd += path.normalize(e.input)
+      }
+      else if(e.inputType=="checkbox"){
+        
+      }
+      else{
+        cmd += e.input
+      }
+      cmd += " "
+      
+    })
+    console.log(cmd)
+    exec(cmd);
+  });
 })
 
 function createWindow () {
@@ -42,6 +84,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+  mainWindow.webContents.on('did-finish-load', function() {
+    mainWindow.webContents.send("refresh_rendering",persistantData,rowTemplate)
+  });
   
 
   
@@ -60,6 +105,7 @@ app.on('ready', createWindow)
 app.on('window-all-closed', function () {
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
+  fs.writeFileSync('persistant.json',JSON.stringify(persistantData))
   if (process.platform !== 'darwin') {
     app.quit()
   }
